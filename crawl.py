@@ -18,11 +18,11 @@ html_doc = response.read()
 # 用第三方插件 lxml 解析(需安装)
 soup = BeautifulSoup(html_doc,'lxml',from_encoding='utf-8')
 
-links = soup.find_all('a',string='关于天尚')
-
+#links = soup.find_all('a',string='关于天尚')
+links = soup.find_all('a')
 # 使用[0]获取全部内容,否则为乱码
 
-print links[0]
+#print links[0]
 print type (links)
 
 for link in links:
