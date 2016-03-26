@@ -29,5 +29,4 @@ for link in links:
     print link.name,link['href'],link.get_text()
 
 
-
 #print soup.title.get_text()
