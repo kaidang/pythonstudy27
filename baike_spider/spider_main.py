@@ -1,18 +1,24 @@
 # _*_ coding:utf-8 _*
 
-from  baike_spider html_parser,url_manager,html_outputer,html_downloader
+from  baike_spider import url_manager
+from  baike_spider import html_downloader
+from  baike_spider import html_parser
+from  baike_spider import html_outputer
+
 
 class SpiderMain(object):
 
     def __init__(self):
-        self.urls = baike_spider.url_manager.UrlManager()
-        self.downloader = baike_spider.html_downloader.HtmlDownloader()
-        self.parser = baike.spider.html_parser.HtmlParser()
-        self.outputer = baike_spider.html_outputer.HtmlOupter()
+        self.urls = url_manager.UrlManager()
+        self.downloader = html_downloader.HtmlDownloader()
+        self.parser = html_parser.HtmlParser()
+        self.outputer = html_outputer.HtmlOutputer()
 
-    def craw(self, root_rul):
+    def craw(self, root_url):
         count = 1
+
         self.urls.add_new_url(root_url)
+
         while self.urls.has_new_url():
             try:
                 new_url = self.urls.get_new_url()
@@ -22,7 +28,7 @@ class SpiderMain(object):
                 self.urls.add_new_urls(new_urls)
                 self.outputer.collect_data(new_data)
 
-                if count == 1000:
+                if count == 100:
                     break
 
                 count = count + 1

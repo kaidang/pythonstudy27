@@ -4,12 +4,12 @@ class HtmlOutputer(object):
      def __init__(self):
          self.datas = []
 
-    def collect_data(self):
+     def collect_data(self):
         if data is None:
             return
         self.datas.append(data)
 
-    def output_html(self):
+     def output_html(self):
         fout = open('output.html','w')
         fout.write("<html>")
         fout.write("<body>")

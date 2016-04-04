@@ -19,17 +19,14 @@ class HtmlParser(object):
         res_data = {}
         # url
         res_data['url'] = page_url
+        #<h1>Python</h1><dd class="lemmaWgt-lemmaTitle-title">
+        title_node = soup.find('dd', class_="lemmaWgt-lemmaTitle-title").find('h1')
+        res_data['title'] = title_node.get_text()
 
-       #<h1>Python</h1><dd class="lemmaWgt-lemmaTitle-title">
-
-       title_node = soup.find('dd',class_="lemmaWgt-lemmaTitle-title")
-
-       res_data['title'] = title_node.get_text()
-
-      # <div class="lemma-summary" label-module="lemmaSummary">
-       summary_node = soup.find('div',class_= "lemma-summary")
-       res_data['summary'] = summary_node.get_text()
-       return res_data
+        # <div class="lemma-summary" label-module="lemmaSummary">
+        summary_node = soup.find('div',class_= "lemma-summary")
+        res_data['summary'] = summary_node.get_text()
+        return res_data
 
 
     def parser(self,page_url,html_cont):
