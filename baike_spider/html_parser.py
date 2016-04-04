@@ -2,6 +2,7 @@
 
 from bs4 import BeautifulSoup
 import re
+
 class HtmlParser(object):
 
     def _get_new_urls(self,page_url,soup):
@@ -20,7 +21,9 @@ class HtmlParser(object):
         res_data['url'] = page_url
 
        #<h1>Python</h1><dd class="lemmaWgt-lemmaTitle-title">
+
        title_node = soup.find('dd',class_="lemmaWgt-lemmaTitle-title")
+
        res_data['title'] = title_node.get_text()
 
       # <div class="lemma-summary" label-module="lemmaSummary">
